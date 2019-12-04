@@ -17,5 +17,17 @@ class DefaultController extends AbstractController
             'controller_name' => 'DefaultController',
         ]);
     }
+	/**
+     * @Route("/gestionclient")
+     */
+
+	 public function gestionclient()
+    {
+        return $this->render('gestion_clientele/index.html.twig', [
+            'controller_name' => 'GestionClienteleController',
+        ]);
+    }
+
+
 }
 
