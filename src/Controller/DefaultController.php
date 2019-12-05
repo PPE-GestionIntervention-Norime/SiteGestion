@@ -9,7 +9,7 @@ class DefaultController extends AbstractController
 {
  
     /**
-     * @Route("/" name="index")
+     * @Route("/", name="index")
      */
     public function index()
     {
@@ -25,6 +25,17 @@ class DefaultController extends AbstractController
     {
         return $this->render('gestion_clientele/index.html.twig', [
             'controller_name' => 'GestionClienteleController',
+        ]);
+    }
+
+	/**
+     * @Route("/administration")
+     */
+
+	 public function adminitration()
+    {
+        return $this->render('adminitration/index.html.twig', [
+            'controller_name' => 'adminitrationController',
         ]);
     }
 
