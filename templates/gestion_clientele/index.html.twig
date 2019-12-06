@@ -9,12 +9,48 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<center>
+    <h1>Gestion des clients</h1><hr>
+	<button type="button" class="btn btn-primary">Client list</button>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/SiteGestion/src/Controller/GestionClienteleController.php'|file_link(0) }}">src/Controller/GestionClienteleController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/SiteGestion/templates/gestion_clientele/index.html.twig'|file_link(0) }}">templates/gestion_clientele/index.html.twig</a></code></li>
-    </ul>
+   <button type="button" class="btn btn-success">New user</button><br><hr>
+   
+	<h1>Rechercher un clients</h1>
+   <form>
+  
+    
+	<div class="col-auto">
+      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="fas fa-mobile"></i></div>
+        </div>
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Phone">
+      </div>
+    </div>
+	<div class="col-auto">
+      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="fas fa-phone"></i></div>
+        </div>
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Fixe">
+      </div>
+    </div>
+	<div class="col-auto">
+      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="fas fa-user-alt"></i></div>
+        </div>
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Client">
+      </div>
+    </div>
+<div class="form-row">
+  <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i>   Sign in</button>
+  </div>
+</form>
+
+</center>
 </div>
 {% endblock %}
