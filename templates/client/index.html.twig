@@ -9,13 +9,13 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Portable</th>
-                <th>Fixe</th>
-                <th>Adresse</th>
+                <th>{{ 'Lastname'|trans }}</th>
+                <th>{{ 'Name'|trans }}</th>
+                <th>{{'Cellphone'|trans }}</th>
+                <th>{{ 'Phone'|trans }}</th>
+                <th>{{ 'Address'|trans }}</th>
                 <th>Mail</th>
-                <th>Professional</th>
+                <th>{{ 'Professional'|trans }}</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -31,17 +31,17 @@
                 <td>{{ client.mail }}</td>
                 <td>{{ client.professional ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('client_show', {'id': client.id}) }}">show</a>
-                    <a href="{{ path('client_edit', {'id': client.id}) }}">edit</a>
+                    <a href="{{ path('client_show', {'id': client.id}) }}">{{ 'Show'|trans }}</a>
+                    <a href="{{ path('client_edit', {'id': client.id}) }}">{{ 'Edit'|trans }}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="9">no records found</td>
+                <td colspan="9">{{ 'no records found'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('client_new') }}">Create new</a>
+    <a href="{{ path('client_new') }}" class="btn btn-info">{{'Create new'|trans }}</a>
 {% endblock %}

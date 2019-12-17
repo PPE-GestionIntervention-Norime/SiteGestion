@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="tRLZfny" resname="User">
+        <source>User</source>
+        <target>Utilisateur</target>
+      </trans-unit>
+      <trans-unit id="o1fQZY1" resname="Add request">
+        <source>Add request</source>
+        <target>Nouvelle requête</target>
+      </trans-unit>
+      <trans-unit id="fruVvio" resname="Intervention list">
+        <source>Intervention list</source>
+        <target>List des interventions</target>
+      </trans-unit>
+      <trans-unit id="S0LGaQ6" resname="Administration">
+        <source>Administration</source>
+        <target>Administration</target>
+      </trans-unit>
+      <trans-unit id="htiPHRy" resname="Lastname">
+        <source>Lastname</source>
+        <target>Nom de famille</target>
+      </trans-unit>
+      <trans-unit id="3NHVIj9" resname="Name">
+        <source>Name</source>
+        <target>Prenom</target>
+      </trans-unit>
+      <trans-unit id="Gcc6XN8" resname="Professional">
+        <source>Professional</source>
+        <target>Professionnelle</target>
+      </trans-unit>
+      <trans-unit id="ULbA6fD" resname="Cellphone">
+        <source>Cellphone</source>
+        <target>Téléphone portable</target>
+      </trans-unit>
+      <trans-unit id="Y9zriAC" resname="Phone">
+        <source>Phone</source>
+        <target>Téléphone fixe</target>
+      </trans-unit>
+      <trans-unit id="Vu_PIJV" resname="Address">
+        <source>Address</source>
+        <target>Addresse</target>
+      </trans-unit>
+      <trans-unit id="DfbxytN" resname="Show">
+        <source>Show</source>
+        <target>Voir</target>
+      </trans-unit>
+      <trans-unit id="RkxP.QG" resname="Edit">
+        <source>Edit</source>
+        <target>Editer</target>
+      </trans-unit>
+      <trans-unit id="D5lam8." resname="no records found">
+        <source>no records found</source>
+        <target>Aucun résultat</target>
+      </trans-unit>
+      <trans-unit id="nz33U6Q" resname="Create new">
+        <source>Create new</source>
+        <target>Nouveau</target>
+      </trans-unit>
+      <trans-unit id="eiPQGxu" resname="New client">
+        <source>New client</source>
+        <target>Nouveau client</target>
+      </trans-unit>
+      <trans-unit id="t0opAqx" resname="Create new client">
+        <source>Create new client</source>
+        <target>Créer nouveau client</target>
+      </trans-unit>
+      <trans-unit id="U0M9PNE" resname="back to list">
+        <source>back to list</source>
+        <target>Retour à la liste</target>
+      </trans-unit>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Supprimer</target>
+      </trans-unit>
+      <trans-unit id="0Bzb4T0" resname="Edit Client">
+        <source>Edit Client</source>
+        <target>Modifier un client</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
