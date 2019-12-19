@@ -51,10 +51,6 @@ class Intervention
      */
     private $equipment;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\InterventionType", mappedBy="Intervention")
-     */
-    private $interventionTypes;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\EquipmentIncomplete", mappedBy="intervention")
@@ -77,11 +73,16 @@ class Intervention
      */
     private $client;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\TypeIntervention", mappedBy="intevention_typeIntervention")
+     */
+    private $typeInterventions;
+
     public function __construct()
     {
-        $this->interventionTypes = new ArrayCollection();
         $this->equipmentIncompletes = new ArrayCollection();
         $this->technicians = new ArrayCollection();
+        $this->typeInterventions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -161,33 +162,6 @@ class Intervention
         return $this;
     }
 
-    /**
-     * @return Collection|InterventionType[]
-     */
-    public function getInterventionTypes(): Collection
-    {
-        return $this->interventionTypes;
-    }
-
-    public function addInterventionType(InterventionType $interventionType): self
-    {
-        if (!$this->interventionTypes->contains($interventionType)) {
-            $this->interventionTypes[] = $interventionType;
-            $interventionType->addIntervention($this);
-        }
-
-        return $this;
-    }
-
-    public function removeInterventionType(InterventionType $interventionType): self
-    {
-        if ($this->interventionTypes->contains($interventionType)) {
-            $this->interventionTypes->removeElement($interventionType);
-            $interventionType->removeIntervention($this);
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|EquipmentIncomplete[]
@@ -271,6 +245,34 @@ class Intervention
     public function setClient(?Client $client): self
     {
         $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|TypeIntervention[]
+     */
+    public function getTypeInterventions(): Collection
+    {
+        return $this->typeInterventions;
+    }
+
+    public function addTypeIntervention(TypeIntervention $typeIntervention): self
+    {
+        if (!$this->typeInterventions->contains($typeIntervention)) {
+            $this->typeInterventions[] = $typeIntervention;
+            $typeIntervention->addInteventionTypeIntervention($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTypeIntervention(TypeIntervention $typeIntervention): self
+    {
+        if ($this->typeInterventions->contains($typeIntervention)) {
+            $this->typeInterventions->removeElement($typeIntervention);
+            $typeIntervention->removeInteventionTypeIntervention($this);
+        }
 
         return $this;
     }

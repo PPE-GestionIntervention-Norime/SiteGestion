@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Intervention index{% endblock %}
+
+{% block body %}
+    <h1>Intervention index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date_depot</th>
+                <th>Date_restitution</th>
+                <th>Session_user</th>
+                <th>Password</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for intervention in interventions %}
+            <tr>
+                <td>{{ intervention.id }}</td>
+                <td>{{ intervention.dateDepot ? intervention.dateDepot|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ intervention.dateRestitution ? intervention.dateRestitution|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ intervention.sessionUser }}</td>
+                <td>{{ intervention.password }}</td>
+                <td>
+                    <a href="{{ path('intervention_show', {'id': intervention.id}) }}">show</a>
+                    <a href="{{ path('intervention_edit', {'id': intervention.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('intervention_new') }}">Create new</a>
+{% endblock %}

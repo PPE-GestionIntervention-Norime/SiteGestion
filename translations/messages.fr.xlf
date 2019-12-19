@@ -11,7 +11,7 @@
       </trans-unit>
       <trans-unit id="o1fQZY1" resname="Add request">
         <source>Add request</source>
-        <target>Nouvelle requête</target>
+        <target>Nouvelle demande</target>
       </trans-unit>
       <trans-unit id="fruVvio" resname="Intervention list">
         <source>Intervention list</source>

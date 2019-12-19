@@ -25,7 +25,7 @@ class Equipment
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Intervention", mappedBy="equipment", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Intervention", mappedBy="equipment", cascade={"persist"} )
      */
     private $intervention;
 
