@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OSRepository")
- * @ORM\Table(name="tbl_os")
+ * @ORM\Table(name="tbl_os" )
  */
 class OS
 {
@@ -81,4 +81,10 @@ class OS
 
         return $this;
     }
+
+    public function __toString() {
+        return $this->name;
+    }
+
+
 }
