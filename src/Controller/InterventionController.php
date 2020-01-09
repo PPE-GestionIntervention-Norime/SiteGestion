@@ -33,8 +33,6 @@ class InterventionController extends AbstractController
     public function new(Request $request): Response
     {
         $intervention = new Intervention();
-        $observation = new observation();
-        $intervention->setObservation($observation);
 
         $form = $this->createForm(InterventionType::class, $intervention);
         $form->handleRequest($request);

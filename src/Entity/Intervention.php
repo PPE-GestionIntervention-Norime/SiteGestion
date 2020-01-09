@@ -65,8 +65,8 @@ class Intervention
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Observation", mappedBy="intervention", cascade={"persist", "remove"})
      */
-    private $observation;
-
+    /* private $observation;*/
+    
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="intervention")
      * @ORM\JoinColumn(nullable=false)
@@ -77,6 +77,11 @@ class Intervention
      * @ORM\ManyToMany(targetEntity="App\Entity\TypeIntervention", mappedBy="intevention_typeIntervention")
      */
     private $typeInterventions;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Observation;
 
     public function __construct()
     {
@@ -219,7 +224,7 @@ class Intervention
         return $this;
     }
 
-    public function getObservation(): ?Observation
+    /* public function getObservation(): ?Observation
     {
         return $this->observation;
     }
@@ -235,7 +240,7 @@ class Intervention
         }
 
         return $this;
-    }
+    }*/
 
     public function getClient(): ?Client
     {
@@ -273,6 +278,18 @@ class Intervention
             $this->typeInterventions->removeElement($typeIntervention);
             $typeIntervention->removeInteventionTypeIntervention($this);
         }
+
+        return $this;
+    }
+
+    public function getObservation(): ?string
+    {
+        return $this->Observation;
+    }
+
+    public function setObservation(?string $Observation): self
+    {
+        $this->Observation = $Observation;
 
         return $this;
     }

@@ -22,17 +22,17 @@ class Client
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Nom;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $prenom;
+    private $firstname;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $portable;
+    private $celphone;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -42,7 +42,7 @@ class Client
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $adresse;
+    private $address;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -69,38 +69,38 @@ class Client
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getname(): ?string
     {
-        return $this->Nom;
+        return $this->name;
     }
 
-    public function setNom(string $Nom): self
+    public function setname(string $name): self
     {
-        $this->Nom = $Nom;
+        $this->name = $name;
 
         return $this;
     }
 
-    public function getPrenom(): ?string
+    public function getfirstname(): ?string
     {
-        return $this->prenom;
+        return $this->firstname;
     }
 
-    public function setPrenom(string $prenom): self
+    public function setfirstname(string $firstname): self
     {
-        $this->prenom = $prenom;
+        $this->firstname = $firstname;
 
         return $this;
     }
 
-    public function getPortable(): ?int
+    public function getcelphone(): ?int
     {
-        return $this->portable;
+        return $this->celphone;
     }
 
-    public function setPortable(int $portable): self
+    public function setcelphone(int $celphone): self
     {
-        $this->portable = $portable;
+        $this->celphone = $celphone;
 
         return $this;
     }
@@ -117,14 +117,14 @@ class Client
         return $this;
     }
 
-    public function getAdresse(): ?string
+    public function getaddress(): ?string
     {
-        return $this->adresse;
+        return $this->address;
     }
 
-    public function setAdresse(string $adresse): self
+    public function setaddress(string $address): self
     {
-        $this->adresse = $adresse;
+        $this->address = $address;
 
         return $this;
     }
@@ -185,6 +185,6 @@ class Client
     }
 
     public function __toString() {
-        return $this->Nom;
+        return ($this->name . " " . $this->firstname);
     }
 }

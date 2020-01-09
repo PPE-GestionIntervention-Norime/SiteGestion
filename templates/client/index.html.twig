@@ -8,7 +8,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+
                 <th>{{ 'Lastname'|trans }}</th>
                 <th>{{ 'Name'|trans }}</th>
                 <th>{{'Cellphone'|trans }}</th>
@@ -22,12 +22,11 @@
         <tbody>
         {% for client in clients %}
             <tr>
-                <td>{{ client.id }}</td>
-                <td>{{ client.Nom }}</td>
-                <td>{{ client.prenom }}</td>
-                <td>{{ client.portable }}</td>
+                <td>{{ client.name }}</td>
+                <td>{{ client.firstname }}</td>
+                <td>{{ client.celphone }}</td>
                 <td>{{ client.fixe }}</td>
-                <td>{{ client.adresse }}</td>
+                <td>{{ client.address }}</td>
                 <td>{{ client.mail }}</td>
                 <td>{{ client.professional ? 'Yes' : 'No' }}</td>
                 <td>

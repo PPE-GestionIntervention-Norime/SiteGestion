@@ -15,23 +15,23 @@ class InterventionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date_depot')
-            ->add('date_restitution')
             ->add('session_user')
             ->add('password')
-            ->add('OS')
-            //->add('equipment')
-            //->add('interventionTypes')
-            ->add('equipmentIncompletes')
-            ->add('technicians')
             ->add('client')
+            ->add('date_depot')
+            ->add('date_restitution')      
+            ->add('equipment')
+            ->add('equipmentIncompletes')
+            ->add('OS') 
+            //->add('interventionTypes')
+            ->add('technicians')
+            ->add('observation')
+ 
         ;
-        $builder->add('observation', CollectionType::class, array(
+        /*$builder->add('observation', CollectionType::class, array(
             'entry_type' => ObservationType::class,
-            'entry_options' => array(
-                'label' => false,
-            )
-        ));
+            'entry_options' => array('label' => false),
+        ));*/
     }
 
     public function configureOptions(OptionsResolver $resolver)

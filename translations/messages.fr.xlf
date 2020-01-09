@@ -7,15 +7,15 @@
     <body>
       <trans-unit id="tRLZfny" resname="User">
         <source>User</source>
-        <target>Utilisateur</target>
+        <target>GestionClient</target>
       </trans-unit>
       <trans-unit id="o1fQZY1" resname="Add request">
         <source>Add request</source>
-        <target>Nouvelle demande</target>
+        <target>Nouvelle intervention</target>
       </trans-unit>
       <trans-unit id="fruVvio" resname="Intervention list">
         <source>Intervention list</source>
-        <target>List des interventions</target>
+        <target>Liste des interventions</target>
       </trans-unit>
       <trans-unit id="S0LGaQ6" resname="Administration">
         <source>Administration</source>
