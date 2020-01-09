@@ -3,9 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Intervention;
+use App\Entity\Observation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class InterventionType extends AbstractType
 {
@@ -21,9 +24,14 @@ class InterventionType extends AbstractType
             //->add('interventionTypes')
             ->add('equipmentIncompletes')
             ->add('technicians')
-            ->add('observation')
             ->add('client')
         ;
+        $builder->add('observation', CollectionType::class, array(
+            'entry_type' => ObservationType::class,
+            'entry_options' => array(
+                'label' => false,
+            )
+        ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

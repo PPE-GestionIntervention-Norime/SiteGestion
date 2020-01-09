@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Intervention;
 use App\Entity\Equipment;
+use App\Entity\Observation;
 use App\Form\InterventionType;
 use App\Repository\InterventionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,8 +33,8 @@ class InterventionController extends AbstractController
     public function new(Request $request): Response
     {
         $intervention = new Intervention();
-        $equipment = new Equipment();
-        $intervention->setEquipment($equipment);
+        $observation = new observation();
+        $intervention->setObservation($observation);
 
         $form = $this->createForm(InterventionType::class, $intervention);
         $form->handleRequest($request);

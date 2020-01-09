@@ -1,5 +1,4 @@
-
-?php
+<?php
 
 declare(strict_types=1);
 
@@ -11,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200109104905 extends AbstractMigration
+final class Version20200109133231 extends AbstractMigration
 {
     public function getDescription() : string
     {
