@@ -10,6 +10,6 @@
     "\\templates\\default",
     "\\templates\\intervention_list"
   ],
-  "SelectedNode": "\\templates\\add_intervention",
+  "SelectedNode": "\\templates\\administration\\index.html.twig",
   "PreviewInSolutionExplorer": false
 }
