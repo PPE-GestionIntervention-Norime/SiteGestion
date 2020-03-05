@@ -100,8 +100,13 @@ class InterventionController extends AbstractController
      */
     public function filter($id ,InterventionRepository $interventionRepository): Response
     {
+        $interventions = $interventionRepository->findBy(['status' => $id]);
+
+        dump($interventions);
+
         return $this->render('intervention/index.html.twig', [
-            'interventions' => $interventionRepository->filter($id),
+            // 'interventions' => $interventionRepository->filter($id),
+            'interventions' => $interventions,
         ]);
     }
 

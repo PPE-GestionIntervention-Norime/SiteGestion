@@ -34,6 +34,20 @@ class InterventionRepository extends ServiceEntityRepository
         
         return $stmt->fetchAll();
     }
+
+    // public function filter($id)
+    // {
+    //     return $this->createQueryBuilder('i')
+    //         ->andWhere('i.exampleField = :id')
+    //         ->setParameter('id', $id)
+    //         // ->orderBy('i.id', 'ASC')
+    //         ->setMaxResults(10)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+    
+
     // /**
     //  * @return Intervention[] Returns an array of Intervention objects
     //  */
