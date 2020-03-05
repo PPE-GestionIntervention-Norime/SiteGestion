@@ -83,11 +83,20 @@ class Intervention
      */
     private $Observation;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Status", inversedBy="status")
+     */
+    private $status;
+
+
+
+
     public function __construct()
     {
         $this->equipmentIncompletes = new ArrayCollection();
         $this->technicians = new ArrayCollection();
         $this->typeInterventions = new ArrayCollection();
+        $this->statuses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -293,4 +302,17 @@ class Intervention
 
         return $this;
     }
+
+    public function getStatus(): ?Status
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?Status $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+    
 }

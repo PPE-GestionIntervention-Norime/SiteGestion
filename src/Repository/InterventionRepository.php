@@ -19,6 +19,21 @@ class InterventionRepository extends ServiceEntityRepository
         parent::__construct($registry, Intervention::class);
     }
 
+    public function filter($id)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT * 
+            FROM tbl_intervention i
+            WHERE i.status_id = :id
+            ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['id' => $id]);
+
+        
+        return $stmt->fetchAll();
+    }
     // /**
     //  * @return Intervention[] Returns an array of Intervention objects
     //  */

@@ -3,21 +3,54 @@
 {% block title %}Intervention index{% endblock %}
 
 {% block body %}
-    <h1>Intervention index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Date_depot</th>
-                <th>Date_restitution</th>
-                <th>Session_user</th>
-                <th>Password</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for intervention in interventions %}
+<style>
+
+    .container{
+        display: contents;
+
+    }
+
+    .filtreTd{
+        border-right:1px solid black;
+    }
+
+    .filtreTd:hover{
+        border-right:1px solid black;
+        background-color: #343a40;
+        color:white;
+    }
+
+    .filtre{
+        width: 100%;
+        text-align: center;
+        height : 50px;
+    }
+    
+</style>
+<table class="filtre">
+    <tr>
+        <td class="filtreTd"><a href="{{ path('client_index_filter', {'id': '1'} ) }}">Demande en cours</a></td>
+        <td class="filtreTd"><a href="{{ path('client_index_filter', {'id': '2'} ) }}"> Intervention en cour</a></td>
+        <td class="filtreTd"><a href="{{ path('client_index_filter', {'id': '3'} ) }}">Intervention en attente</a></td>
+        <td class="filtreTd"><a href="{{ path('client_index_filter', {'id': '4'} ) }}"> >50 dernières intervention</a></td>
+    </tr>
+</table>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Date_depot</th>
+        <th scope="col">Date_restitution</th>
+        <th scope="col">Session_user</th>
+        <th scope="col">Password</th>
+        <th scope="col">actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {% for intervention in interventions %}
             <tr>
                 <td>{{ intervention.id }}</td>
                 <td>{{ intervention.dateDepot ? intervention.dateDepot|date('Y-m-d H:i:s') : '' }}</td>
@@ -34,8 +67,11 @@
                 <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
+    </tr>
+  </tbody>
+</table>
 
     <a href="{{ path('intervention_new') }}">Create new</a>
 {% endblock %}
+
+

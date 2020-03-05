@@ -57,7 +57,7 @@ class InterventionController extends AbstractController
     public function show(Intervention $intervention): Response
     {
         return $this->render('intervention/show.html.twig', [
-            'intervention' => $intervention,
+            'interventions' => $intervention,
         ]);
     }
 
@@ -94,4 +94,17 @@ class InterventionController extends AbstractController
 
         return $this->redirectToRoute('intervention_index');
     }
+
+     /**
+     * @Route("/{id}/intervention", name="client_index_filter")
+     */
+    public function filter($id ,InterventionRepository $interventionRepository): Response
+    {
+        return $this->render('intervention/index.html.twig', [
+            'interventions' => $interventionRepository->filter($id),
+        ]);
+    }
+
+
+
 }
