@@ -26,7 +26,7 @@ class InterventionType extends AbstractType
             //->add('interventionTypes')
             ->add('technicians')
             ->add('observation')
- 
+            ->add('status')
         ;
         /*$builder->add('observation', CollectionType::class, array(
             'entry_type' => ObservationType::class,
