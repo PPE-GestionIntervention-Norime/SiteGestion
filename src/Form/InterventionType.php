@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Intervention;
+use App\Entity\EquipmentIncomplete;
 use App\Entity\Observation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,13 +22,18 @@ class InterventionType extends AbstractType
             ->add('date_depot')
             ->add('date_restitution')      
             ->add('equipment')
-            ->add('equipmentIncompletes')
             ->add('OS') 
-            //->add('interventionTypes')
+            ->add('typeInterventions')
             ->add('technicians')
             ->add('observation')
             ->add('status')
         ;
+
+        $builder->add('equipmentIncompletes', EntityType::class, array(
+            'class' => EquipmentIncomplete::class,
+            'choice_label' => 'name',
+            'multiple' => true
+        ));
         /*$builder->add('observation', CollectionType::class, array(
             'entry_type' => ObservationType::class,
             'entry_options' => array('label' => false),

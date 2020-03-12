@@ -74,7 +74,7 @@ class Intervention
     private $client;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\TypeIntervention", mappedBy="intevention_typeIntervention")
+     * @ORM\ManyToMany(targetEntity="App\Entity\TypeIntervention", mappedBy="intevention_typeIntervention", cascade={"persist"})
      */
     private $typeInterventions;
 
