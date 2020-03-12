@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\InterventionType;
+use App\Entity\TypeIntervention;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -16,7 +16,14 @@ class InterventionTypeRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, InterventionType::class);
+        parent::__construct($registry, TypeIntervention::class);
+    }
+
+    public function findAll()
+    {
+        $builder = $this->createQueryBuilder('a');
+        $builder->orderBy('a.name','ASC');
+        return $builder->getQuery()->getResult();
     }
 
     // /**

@@ -19,6 +19,13 @@ class OSRepository extends ServiceEntityRepository
         parent::__construct($registry, OS::class);
     }
 
+    public function findAll()
+    {
+        $builder = $this->createQueryBuilder('a');
+        $builder->orderBy('a.name','ASC');
+        return $builder->getQuery()->getResult();
+    }
+
     // /**
     //  * @return OS[] Returns an array of OS objects
     //  */

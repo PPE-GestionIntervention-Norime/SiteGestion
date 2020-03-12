@@ -19,6 +19,13 @@ class EquipmentIncompleteRepository extends ServiceEntityRepository
         parent::__construct($registry, EquipmentIncomplete::class);
     }
 
+    public function findAll()
+    {
+        $builder = $this->createQueryBuilder('a');
+        $builder->orderBy('a.name','ASC');
+        return $builder->getQuery()->getResult();
+    }
+
     // /**
     //  * @return EquipmentIncomplete[] Returns an array of EquipmentIncomplete objects
     //  */

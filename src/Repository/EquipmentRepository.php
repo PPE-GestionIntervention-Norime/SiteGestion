@@ -19,6 +19,12 @@ class EquipmentRepository extends ServiceEntityRepository
         parent::__construct($registry, Equipment::class);
     }
 
+    public function findAll()
+    {
+        $builder = $this->createQueryBuilder('a');
+        $builder->orderBy('a.name','ASC');
+        return $builder->getQuery()->getResult();
+    }
     // /**
     //  * @return Equipment[] Returns an array of Equipment objects
     //  */

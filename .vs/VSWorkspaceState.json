@@ -5,11 +5,9 @@
     "\\src",
     "\\src\\Controller",
     "\\templates",
-    "\\templates\\add_intervention",
     "\\templates\\administration",
     "\\templates\\default",
     "\\templates\\intervention_list"
   ],
-  "SelectedNode": "\\templates\\add_intervention",
   "PreviewInSolutionExplorer": false
 }

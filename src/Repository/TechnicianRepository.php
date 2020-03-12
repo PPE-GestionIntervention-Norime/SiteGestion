@@ -19,6 +19,13 @@ class TechnicianRepository extends ServiceEntityRepository
         parent::__construct($registry, Technician::class);
     }
 
+    public function findAll()
+    {
+        $builder = $this->createQueryBuilder('a');
+        $builder->orderBy('a.name','ASC');
+        return $builder->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Technician[] Returns an array of Technician objects
     //  */

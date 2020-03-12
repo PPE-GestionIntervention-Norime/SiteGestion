@@ -12,11 +12,11 @@
 		justify-content: space-around;
 	}
 	#ContenerAdministration{
-		border: 2px solid black;
+		/*border: 2px solid black;*/
 	}
 
 	.MenuAdministration{
-		Background-color:red;
+		Background-color:grey;
 		width: 100%;
 		height: 5vh;
 		border: 2px solid black;
@@ -25,7 +25,7 @@
 
 	#ContenerItem{
 		height:65vh;
-		Background-color:#5F9EA0;
+		/*Background-color:#5F9EA0;*/
 	}
 
 	.section {
@@ -35,6 +35,8 @@
 
 	.ItemCadre{
 		border:2px solid black;
+		border-radius: 30px;
+		Background-color:grey;
 		width: 30vw;
 		height: 70px;
 		display:flex;
@@ -52,34 +54,25 @@
 		<article class="col-md-12 mx-auto section" id="ContenerAdministration">
 			<div class="col-md-12 mx-auto section" id="NavMenuAdministration">
 				<div class="MenuAdministration">Liste des matériels</div>
+				<div class="MenuAdministration">matériel non fournis</div>
 				<div class="MenuAdministration">Types d'intervention</div>
-				<div class="MenuAdministration">Menu 3</div>
-				<div class="MenuAdministration">Menu 4</div>
-				<div class="MenuAdministration">Menu 5</div>
-				<div class="MenuAdministration">Ajouter</div>
+				<div class="MenuAdministration">OS</div>
+				<div class="MenuAdministration">Technician</div>
+				<div class="MenuAdministration">+</div>
 			</div>
 			<div>
 				<div class="col-md-12 mx-auto section" id="ContenerItem">
-					<div class="ItemCadre" id="">
-						<div>Blabla</div>
-						<div><button>Modif</button></div>
-						<div><button>Delete</button></div>
-					</div>
-					<div class="ItemCadre" id="">
-						<div>Blabla</div>
-						<div><button>Modif</button></div>
-						<div><button>Delete</button></div>
-					</div>
-					<div class="ItemCadre" id="">
-						<div>Blabla</div>
-						<div><button>Modif</button></div>
-						<div><button>Delete</button></div>
-					</div>
-					<div class="ItemCadre" id="">
-						<div>Blabla</div>
-						<div><button>Modif</button></div>
-						<div><button>Delete</button></div>
-					</div>
+					{% for admin in admins %}
+						<div class="ItemCadre" id="">
+							<div>{{ admin.name }}</div>
+							<div><button>Modif</button></div>
+							<div><button>Delete</button></div>
+						</div>
+					{% else %}
+						<tr>
+							<td colspan="9">{{ 'no records found'|trans }}</td>
+						</tr>
+					{% endfor %}
 				</div>
 				<div class="col-md-12 mx-auto section">
 					<div class="bg-danger col-md-12 mx-auto"><span class="glyphicon glyphicon-plus"></span>Add material</div>
