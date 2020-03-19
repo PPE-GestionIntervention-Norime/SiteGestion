@@ -40,23 +40,47 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-        <th scope="col">Id</th>
         <th scope="col">Date_depot</th>
         <th scope="col">Date_restitution</th>
         <th scope="col">Session_user</th>
         <th scope="col">Password</th>
+        <th scope="col">OS</th>
+        <th scope="col">Equipement</th>
+        <th scope="col">Client</th>
+        <th scope="col">Equipement Incomplet</th>
+        <th scope="col">Technicien</th>
+        <th scope="col">typeInterventions</th>
         <th scope="col">actions</th>
+        
+        
     </tr>
   </thead>
   <tbody>
     <tr>
       {% for intervention in interventions %}
             <tr>
-                <td>{{ intervention.id }}</td>
                 <td>{{ intervention.dateDepot ? intervention.dateDepot|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ intervention.dateRestitution ? intervention.dateRestitution|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ intervention.sessionUser }}</td>
                 <td>{{ intervention.password }}</td>
+                <td>{{ intervention.OS }}</td>
+                <td>{{ intervention.equipment }}</td>
+                <td>{{ intervention.client }}</td>
+                <td>
+                {% for intervention in intervention.equipmentIncompletes %}
+                                "{{ intervention.name }}"
+                    {% endfor %}.
+                </td>
+                <td>
+                {% for intervention in intervention.technicians %}
+                                "{{ intervention.name }}"
+                {% endfor %}.
+                </td>
+                <td>
+                {% for intervention in intervention.typeInterventions %}
+                                "{{ intervention.name }}"
+                {% endfor %}.
+                </td>
                 <td>
                     <a href="{{ path('intervention_show', {'id': intervention.id}) }}">show</a>
                     <a href="{{ path('intervention_edit', {'id': intervention.id}) }}">edit</a>
