@@ -1,4 +1,63 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+
+<style>
+
+    .big_div{
+         background-color: #9DD2CB;
+         height : 75%;
+         width : 100%;
+         padding : 16px;
+         margin-top : 16px;
+    }
+
+    .width{
+        width : 45%;
+        height : 38px;
+    }
+</style>
+
+    <div class="big_div">
+        {{ form_widget(form.client) }}
+    <hr>
+        <div style="float:right"> Date de RESTITUTION </div>
+        <div>Date de DEPOT </div>
+
+        <div style="float:right">{{ form_widget(form.date_restitution) }}</div>
+        <div >{{ form_widget(form.date_depot) }}</div>
+        
+
+    <hr>
+        <div style="height:130px;">
+            <div style="float:right">  Le matériel est t'il incomplet ?  </div>
+            <div> MATERIEL</div>
+
+            <div class="width" style="float:right"> {{ form_widget(form.equipmentIncompletes) }}  </div>
+            <div class="width">{{ form_widget(form.equipment) }}</div>
+        </div>
+    <hr>
+        <p>Système d'exploitation du PC</p>
+         {{ form_widget(form.OS) }}
+    <hr>
+
+        <div style="float:right">  Mot de passe de session   </div>
+        <div> Session utilisateur </div>
+
+        <div class="width" style="float:right"> {{ form_widget(form.password) }}  </div>
+        <div class="width">{{ form_widget(form.session_user) }}</div>
+
+    <hr>
+        <p>Type d'intervention</p>
+         {{ form_widget(form.typeInterventions) }}
+    <hr>
+         <p>Observation</p>
+         {{ form_widget(form.observation) }}
+    <hr>
+        <p>Technicien</p>
+         {{ form_widget(form.technicians) }}
+    
+</div> 
+
+<div style="margin-top : 16px;">
+ <center>
+    <button class="btn btn-success"> Ajouter la demande<br>&<br>IMPRIMER la fiche</button>
+ </center>
+</div>

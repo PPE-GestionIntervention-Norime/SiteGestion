@@ -17,22 +17,11 @@ class InterventionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('session_user')
-            ->add('password')
-            ->add('client')
+            ->add('client')   
             ->add('date_depot')
-            ->add('date_restitution')      
-            ->add('equipment')
-            ->add('OS') 
-            ->add('observation')
- 
+            ->add('date_restitution')  
+            ->add('equipment') 
         ;
-        $builder->add('technicians', EntityType::class, array(
-            'class' => Technician::class,
-            'by_reference' => false,
-            'choice_label' => 'firstname',
-            'multiple' => true,
-        ));
 
         $builder->add('equipmentIncompletes', EntityType::class, array(
             'class' => EquipmentIncomplete::class,
@@ -41,12 +30,32 @@ class InterventionType extends AbstractType
             'multiple' => true,
         ));
 
+        $builder
+      
+        ->add('session_user')
+        ->add('password')
+        ->add('OS') 
+        ;
+
         $builder->add('typeInterventions', EntityType::class, array(
             'class' => TypeIntervention::class,
             'by_reference' => false,
             'choice_label' => 'name',
             'multiple' => true,
         ));
+
+        $builder
+    
+        ->add('observation')
+        ;
+
+        $builder->add('technicians', EntityType::class, array(
+            'class' => Technician::class,
+            'by_reference' => false,
+            'choice_label' => 'firstname',
+            'multiple' => true,
+        ));
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

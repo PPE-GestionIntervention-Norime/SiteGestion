@@ -3,7 +3,15 @@
 {% block title %}New Intervention{% endblock %}
 
 {% block body %}
-    <h1>Create new Intervention</h1>
+
+<style>
+    h1{
+        text-align : center;
+        margin-top : 16px;
+    }
+</style>
+
+    <h1>Intervention à effectuer</h1>
 
     {{ include('intervention/_form.html.twig') }}
 
