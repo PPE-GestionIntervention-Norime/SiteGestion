@@ -2,13 +2,15 @@
 
 namespace App\Form;
 
+use App\Entity\Technician;
 use App\Entity\Intervention;
-use App\Entity\Observation;
+use App\Entity\TypeIntervention;
+use App\Entity\EquipmentIncomplete;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class InterventionType extends AbstractType
 {
@@ -21,17 +23,30 @@ class InterventionType extends AbstractType
             ->add('date_depot')
             ->add('date_restitution')      
             ->add('equipment')
-            ->add('equipmentIncompletes')
             ->add('OS') 
-            //->add('interventionTypes')
-            ->add('technicians')
             ->add('observation')
  
         ;
-        /*$builder->add('observation', CollectionType::class, array(
-            'entry_type' => ObservationType::class,
-            'entry_options' => array('label' => false),
-        ));*/
+        $builder->add('technicians', EntityType::class, array(
+            'class' => Technician::class,
+            'by_reference' => false,
+            'choice_label' => 'firstname',
+            'multiple' => true,
+        ));
+
+        $builder->add('equipmentIncompletes', EntityType::class, array(
+            'class' => EquipmentIncomplete::class,
+            'by_reference' => false,
+            'choice_label' => 'name',
+            'multiple' => true,
+        ));
+
+        $builder->add('typeInterventions', EntityType::class, array(
+            'class' => TypeIntervention::class,
+            'by_reference' => false,
+            'choice_label' => 'name',
+            'multiple' => true,
+        ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -35,6 +35,20 @@ class InterventionRepository extends ServiceEntityRepository
         return $stmt->fetchAll();
     }
 
+    public function nbr(): array
+    {
+        $rawSql = "
+        
+SELECT count(*) as nb from tbl_intervention i where i.status_id = 1
+        ";
+
+        $stmt = $this->getEntityManager()->getConnection()->prepare($rawSql);
+        $stmt->execute([]);
+    
+        return $stmt->fetchAll();
+
+    }
+   
     // public function filter($id)
     // {
     //     return $this->createQueryBuilder('i')

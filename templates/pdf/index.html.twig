@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Generate PDF File</title>
+    </head>
+    <body>
+        <style>   
+               .pdf_head {
+                    width : 100%;
+                    height : 5%;
+                }
+
+                .pdf_end{
+                    width : 100%;
+                    height : 5%;
+                }
+        </style>
+
+       <div class="pdf_head"></div>
+
+       <hr>
+        
+        <table style="margin_top:16px;">
+            <tr><td> Client </td><td>{{ interventions.client }}</td></tr>
+            <tr><td>{{ interventions.equipment }} déposé le {{ interventions.dateDepot ? interventions.dateDepot|date('Y-m-d ') : '' }}</td></tr>
+        </table>
+    </body>
+</html>

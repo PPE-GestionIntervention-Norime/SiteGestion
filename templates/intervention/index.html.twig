@@ -30,7 +30,7 @@
 </style>
 <table class="filtre">
     <tr>
-        <td class="filtreTd"><a href="{{ path('client_index_filter', {'id': '1'} ) }}">Demande en cours</a></td>
+        <td class="filtreTd"><a href="{{ path('client_index_filter', {'id': '1'} ) }}">Demande en cours</a>  </td>
         <td class="filtreTd"><a href="{{ path('client_index_filter', {'id': '2'} ) }}"> Intervention en cour</a></td>
         <td class="filtreTd"><a href="{{ path('client_index_filter', {'id': '3'} ) }}">Intervention en attente</a></td>
         <td class="filtreTd"><a href="{{ path('client_index_filter', {'id': '4'} ) }}"> >50 dernières intervention</a></td>
@@ -41,16 +41,16 @@
   <thead class="thead-dark">
     <tr>
         <th scope="col">Date_depot</th>
-        <th scope="col">Date_restitution</th>
-        <th scope="col">Session_user</th>
-        <th scope="col">Password</th>
-        <th scope="col">OS</th>
-        <th scope="col">Equipement</th>
         <th scope="col">Client</th>
+        <th scope="col">Interventions</th>
+         <!-- <th scope="col">Date_restitution</th>
+        <th scope="col">Session_user</th>
+        <th scope="col">Password</th> 
+        <th scope="col">OS</th>-->
+        <th scope="col">Equipement</th>
         <th scope="col">Equipement Incomplet</th>
         <th scope="col">Technicien</th>
-        <th scope="col">typeInterventions</th>
-        <th scope="col">actions</th>
+        <th scope="col" style="text-align:center">Administration</th>
         
         
     </tr>
@@ -60,30 +60,52 @@
       {% for intervention in interventions %}
             <tr>
                 <td>{{ intervention.dateDepot ? intervention.dateDepot|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ intervention.dateRestitution ? intervention.dateRestitution|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ intervention.sessionUser }}</td>
-                <td>{{ intervention.password }}</td>
-                <td>{{ intervention.OS }}</td>
-                <td>{{ intervention.equipment }}</td>
                 <td>{{ intervention.client }}</td>
+                <!-- <td>{{ intervention.dateRestitution ? intervention.dateRestitution|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ intervention.sessionUser }}</td>
+                <td>{{ intervention.password }}</td> 
+                <td>{{ intervention.OS }}</td>-->
+
+                {% if  intervention.equipment  == 'Pc fixe' %}
+
+                <td style="background : #FFCDCD">{{ intervention.equipment }}</td>
+
+                {% else %}
+
+                <td style="background : #FFFF71">{{ intervention.equipment }}</td>
+
+                {% endif %}
+
+                <td>
+                {% for intervention in intervention.typeInterventions %}
+
+                        {% if  intervention.name   == 'Depanage' %}
+                                <p style="background : #5698DC">{{ intervention.name }}</p>
+                        {% elseif  intervention.name   == 'Formatage' %}
+                                <p style="background : black; color: white">{{ intervention.name }}</p>
+                        {% elseif  intervention.name   == 'Autres' %}
+                                <p style="background : #88D96E">{{ intervention.name }}</p>
+                        {% endif %}
+                {% endfor %}
+                </td>
+                
                 <td>
                 {% for intervention in intervention.equipmentIncompletes %}
-                                "{{ intervention.name }}"
-                    {% endfor %}.
+                                {{ intervention.name }}
+                    {% endfor %}
                 </td>
                 <td>
                 {% for intervention in intervention.technicians %}
-                                "{{ intervention.name }}"
-                {% endfor %}.
+                                {{ intervention.firstname }}
+                {% endfor %}
                 </td>
+                
                 <td>
-                {% for intervention in intervention.typeInterventions %}
-                                "{{ intervention.name }}"
-                {% endfor %}.
-                </td>
-                <td>
-                    <a href="{{ path('intervention_show', {'id': intervention.id}) }}">show</a>
-                    <a href="{{ path('intervention_edit', {'id': intervention.id}) }}">edit</a>
+                     <center>
+                        <a href="{{ path('intervention_show', {'id': intervention.id}) }}"><button type="button" class="btn btn-primary">Voir <br> Intervention</button></a>
+                        <a href="{{ path('intervention_edit', {'id': intervention.id}) }}"><button type="button" class="btn btn-danger">Modifier <br> Intervention</button></a>
+                        <a href="{{ path('pdf', {'id': intervention.id}) }}"><button type="button" class="btn btn-info"><i class="fas fa-print"></i> <br> Imprimer</button></a>
+                    </center>
                 </td>
             </tr>
         {% else %}

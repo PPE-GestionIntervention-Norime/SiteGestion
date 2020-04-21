@@ -24,6 +24,7 @@ class InterventionController extends AbstractController
     {
         return $this->render('intervention/index.html.twig', [
             'interventions' => $interventionRepository->findAll(),
+            'Number' => $interventionRepository->nbr(),
         ]);
     }
 

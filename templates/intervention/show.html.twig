@@ -9,30 +9,29 @@
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ intervention.id }}</td>
+                <td>{{ interventions.id }}</td>
             </tr>
             <tr>
                 <th>Date_depot</th>
-                <td>{{ intervention.dateDepot ? intervention.dateDepot|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ interventions.dateDepot ? interventions.dateDepot|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Date_restitution</th>
-                <td>{{ intervention.dateRestitution ? intervention.dateRestitution|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ interventions.dateRestitution ? interventions.dateRestitution|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Session_user</th>
-                <td>{{ intervention.sessionUser }}</td>
+                <td>{{ interventions.sessionUser }}</td>
             </tr>
             <tr>
                 <th>Password</th>
-                <td>{{ intervention.password }}</td>
+                <td>{{ interventions.password }}</td>
             </tr>
         </tbody>
     </table>
 
     <a href="{{ path('intervention_index') }}">back to list</a>
 
-    <a href="{{ path('intervention_edit', {'id': intervention.id}) }}">edit</a>
+    <a href="{{ path('intervention_edit', {'id': interventions.id}) }}">edit</a>
 
-    {{ include('intervention/_delete_form.html.twig') }}
 {% endblock %}
