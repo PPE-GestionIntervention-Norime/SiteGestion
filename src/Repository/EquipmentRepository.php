@@ -19,6 +19,22 @@ class EquipmentRepository extends ServiceEntityRepository
         parent::__construct($registry, Equipment::class);
     }
 
+    public function filter($nom)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT * 
+            FROM tbl_intervention i
+            WHERE i.name LIKE :nom
+            ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['nom' => $nom]);
+
+        
+        return $stmt->fetchAll();
+    }
+
     // /**
     //  * @return Equipment[] Returns an array of Equipment objects
     //  */

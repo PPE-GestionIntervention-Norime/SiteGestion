@@ -26,6 +26,21 @@ class ClientController extends AbstractController
     }
 
     /**
+     * @Route("/{nom}/", name="client_index_nom", methods={"GET"})
+     */
+    public function indexNom($nom, ClientRepository $clientRepository): Response
+    {
+        $clients = $clientRepository->findBy(['name' => $nom]);
+
+        dump($clients);
+
+        return $this->render('client/index.html.twig', [
+            'clients' => $clients,
+        ]);
+    }
+
+
+    /**
      * @Route("/new", name="client_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response

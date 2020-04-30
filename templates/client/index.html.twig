@@ -3,44 +3,109 @@
 {% block title %}Client index{% endblock %}
 
 {% block body %}
-    <h1>Client index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
+<style>
+    .information{
+        display : flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
 
-                <th>{{ 'Lastname'|trans }}</th>
-                <th>{{ 'Name'|trans }}</th>
-                <th>{{'Cellphone'|trans }}</th>
-                <th>{{ 'Phone'|trans }}</th>
-                <th>{{ 'Address'|trans }}</th>
-                <th>Mail</th>
-                <th>{{ 'Professional'|trans }}</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for client in clients %}
-            <tr>
-                <td>{{ client.name }}</td>
-                <td>{{ client.firstname }}</td>
-                <td>{{ client.celphone }}</td>
-                <td>{{ client.fixe }}</td>
-                <td>{{ client.address }}</td>
-                <td>{{ client.mail }}</td>
-                <td>{{ client.professional ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('client_show', {'id': client.id}) }}">{{ 'Show'|trans }}</a>
-                    <a href="{{ path('client_edit', {'id': client.id}) }}">{{ 'Edit'|trans }}</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">{{ 'no records found'|trans }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    .div{
+        margin-top: 20px;
+        
+    }
 
-    <a href="{{ path('client_new') }}" class="btn btn-info">{{'Create new'|trans }}</a>
+    .title{
+        background-color: #9DD2CB;
+        border-bottom : 1px solid black;
+    }
+
+    .right{
+        width : 30%;
+        height : 100vh;
+        padding-right : 32px;
+        display : flex;
+        flex-direction: column;
+        justify-content: center;
+       
+    }
+
+    .left{
+        width : 70%;
+        height : 100%;
+        overflow: auto;
+    }
+
+    .bloc{
+        width : 100em;
+        display : flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height : 90vh;
+        zoom : 90%;
+       
+    }
+
+    .container{
+         margin : 0px;
+    }
+
+    html
+    { 
+        overflow : hidden ;
+    }
+</style>
+
+    <div class="bloc">
+        <div class="right">
+            <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping"><i class="fas fa-user-alt"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Nom Client" aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
+
+            <br>
+
+            <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping"><i class="fas fa-mobile-alt"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Portable" aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
+
+            <br>
+
+            <div>           
+                <a href="{{ path('client_new') }}" class="btn btn-info">{{'Create new'|trans }}</a>
+            </div>
+            
+        </div>
+        <div  class="left">
+            {% for client in clients %}
+            <div class="div">
+                <center><h2 class="title">{{ client.name }}</h2></center>
+                <div class="information">
+                    
+                        <p style="width : 15%"> Portable = {{ client.celphone }}</p>
+                        <p style="width : 40%"> adresse postale {{ client.address }}</p>
+                        <p>
+                            <a href="{{ path('intervention_new') }}"><button type="button" class="btn btn-success"><i class="fas fa-pen"></i><br>Ajouter une demande <br> d'intervention</button></a>
+                            <a href="{{ path('client_show', {'id': client.id}) }}"><button type="button" class="btn btn-info"><i class="fas fa-user-alt"></i><br>Fiche client <br> <strong>{{ client.name }}</strong></button></a>
+                            <a href="{{ path('client_show', {'id': client.id}) }}"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i><br>Suppression<br> fiche client</button></a>   
+                        </p>
+                    
+                </div>
+            </div>
+            <hr>
+            {% else %}
+                    <tr>
+                        <td colspan="9">{{ 'no records found'|trans }}</td>
+                    </tr>
+            {% endfor %}  
+        </div>
+    </div>
+  
+
 {% endblock %}

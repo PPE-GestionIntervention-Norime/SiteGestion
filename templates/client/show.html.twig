@@ -3,48 +3,80 @@
 {% block title %}Client{% endblock %}
 
 {% block body %}
+
+    <style>
+
+        .fiche{
+            width : 80 vh; 
+            height:80 vh ;
+            background-color : #9DD2CB;
+            padding : 16px;
+            margin-bottom : 32px;
+        }
+
+       .fiche h2, .fiche p{
+           margin-left : 10%;
+       }
+
+       h1{
+           margin-top : 16px;
+           margin-bottom : 16px;
+       }
+
+       .ficheDiv{
+           width : 100% ;
+           height : 200px;
+           overflow: auto;
+       }
+
+       .headone{
+            width : 10%;
+            height : 100%;
+            display: flex;
+            flex-direction: column;
+       }
+
+       .headtwo{
+         width : 90%;
+         height : 100%;
+       }
+
+       .headone a{
+           width : 100%;
+           height : 50%;
+           
+       }
+    </style>
+
     <h1>Client</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ client.id }}</td>
-            </tr>
-            <tr>
-                <th>{{ 'Lastname'|trans }}</th>
-                <td>{{ client.name }}</td>
-            </tr>
-            <tr>
-                <th>{{ 'Name'|trans }}</th>
-                <td>{{ client.firstname }}</td>
-            </tr>
-            <tr>
-                <th>{{'Cellphone'|trans }}</th>
-                <td>{{ client.celphone }}</td>
-            </tr>
-            <tr>
-                <th>{{ 'Phone'|trans }}</th>
-                <td>{{ client.fixe }}</td>
-            </tr>
-            <tr>
-                <th>{{ 'Address'|trans }}</th>
-                <td>{{ client.address }}</td>
-            </tr>
-            <tr>
-                <th>Mail</th>
-                <td>{{ client.mail }}</td>
-            </tr>
-            <tr>
-                <th>{{ 'Professional'|trans }}</th>
-                <td>{{ client.professional ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="fiche">
+
+        <div style="display: flex;">
+            <div class="headone">
+                <a href="{{ path('client_edit', {'id': client.id}) }}"><button type="button" class="btn btn-info  btn-lg">{{ 'Edit'|trans }}</button></a>
+                <hr>
+                {{ include('client/_delete_form.html.twig') }}
+            </div>
+            <div class="headtwo">
+                <h2>{{ client.name }} {{ client.firstname }}</h2>
+                <p> Fixe : {{ client.fixe }}  Portable : {{ client.celphone }}</p>
+                <p> Address : {{ client.address }} </p>
+                <p> Email : {{ client.mail }} </p>
+            </div>
+        </div>
+        <div class="ficheDiv">
+            {% for intervention in client.intervention %}
+                <a href="{{ path('intervention_show', {'id': intervention.id}) }}">
+                    {{ intervention.id }}  {{ intervention.equipment }}  {{ intervention.dateDepot ? intervention.dateDepot|date('d-m-Y') : '' }}<hr>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+   
 
     <a href="{{ path('client_index') }}" class="btn btn-dark">{{ 'back to list'|trans }}</a>
 
-    <a href="{{ path('client_edit', {'id': client.id}) }}">{{ 'Edit'|trans }}</a>
-
-    {{ include('client/_delete_form.html.twig') }}
+    
 {% endblock %}

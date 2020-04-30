@@ -14,15 +14,92 @@
                     width : 100%;
                     height : 5%;
                 }
+
+                .body{
+                    display : flex;
+                    flex-direction : column  ;
+                    justify-content : space-between ;
+                    border-bottom : 1px solid black;
+                }
+
+                .table {
+                    border : 1px solid black ; 
+                    width : 100%;
+                    border-collapse: collapse;
+                }
+
+                tr, td {
+                    border: thin solid black;
+                    width: 50%;
+                }
         </style>
 
-       <div class="pdf_head"></div>
+        <div >
+            <div>
+                Client : {{ interventions.client }}
 
-       <hr>
-        
-        <table style="margin_top:16px;">
-            <tr><td> Client </td><td>{{ interventions.client }}</td></tr>
-            <tr><td>{{ interventions.equipment }} déposé le {{ interventions.dateDepot ? interventions.dateDepot|date('Y-m-d ') : '' }}</td></tr>
-        </table>
+                {% for client in interventions.client %}
+                    Portable : {{ client.celphone }}
+                {% endfor %}
+                
+            </div>
+
+            <hr>
+            
+            <div>
+                   <p>{{ interventions.equipment }} déposé le {{ interventions.dateDepot ? interventions.dateDepot|date('d-m-Y ') : '' }} à rendre le {{ interventions.dateRestitution ? interventions.dateRestitution|date('d-m-Y') : '' }}   </p>
+                   <p>Matériel manquant : 
+                           {% for intervention in interventions.equipmentIncompletes %}
+                                {{ intervention.name }}
+                            {% endfor %}
+                    </p>
+
+                    {{ interventions.observation }}
+                    <p>Technicien ayant pris la demande 
+                        <strong> 
+                                {% for interventions in interventions.technicians %}
+                                        {{ interventions.firstname }}
+                                {% endfor %}
+                        </strong>
+                    </p>
+
+            </div>
+
+            <hr>
+
+            <div>
+                <table class="table">
+                    <tr ><td></td><td>Analyse <strong> externe</strong></td><td>Analyse <strong> Interne</strong></td><td><strong> Informations complémentaire</strong></td></tr>
+                    <tr><td>Virus</td><td></td><td></td>
+                        <td> 
+                            <input type="checkbox"> ADWC</input>
+                            <input type="checkbox"> RK</input><br>
+                            <input type="checkbox"> CC</input>
+                            <input type="checkbox"> JRT</input><br>
+                            <input type="checkbox"> ZHP</input>
+                        </td>
+                    </tr>
+                    <tr><td>Malwares</td><td></td><td></td>
+                        <td>
+                            <input type="checkbox"> Optimisation démarrage</input>
+                            <input type="checkbox"> R à Z navigateurs </input><br>
+                            <input type="checkbox"> Suppression proxy</input>
+                        </td>
+                    </tr>
+                    <tr><td>Spywares</td><td></td><td></td>
+                        <td>
+                            <input type="checkbox">Scan redémarrage effectué</input>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <hr>
+
+            <div>
+                <strong>  Signature </strong> <br>Lu est aprrouvé
+            </div>
+
+        </div>
     </body>
 </html>

@@ -1,4 +1,51 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save')|trans }}</button>
-{{ form_end(form) }}
+
+<style>
+
+    .big_div{
+         background-color: #9DD2CB;
+         height : 75%;
+         width : 100%;
+         padding : 16px;
+         margin-top : 16px;
+    }
+
+    .width{
+        width : 45%;
+        height : 38px;
+    }
+</style>
+
+    <div class="big_div">
+
+            <div style="float:right">  Prenom   </div>
+            <div> Nom </div>
+
+            <div class="width" style="float:right"> {{ form_widget(form.firstname) }}  </div>
+            <div class="width">{{ form_widget(form.name) }}</div>
+
+        <hr>
+
+            <div style="float:right">  Téléphone Fixe   </div>
+            <div>  Téléphone Portable </div>
+
+            <div class="width" style="float:right"> {{ form_widget(form.fixe) }}  </div>
+            <div class="width">{{ form_widget(form.celphone) }}</div>
+
+        <hr>
+
+            <div style="float:right">  Adresse Postale  </div>
+            <div>  Adresse E-Mail  </div>
+
+            <div class="width" style="float:right"> {{ form_widget(form.address) }}  </div>
+            <div class="width">{{ form_widget(form.mail) }}</div>
+
+        <hr>
+            <p>Professionnel</p>
+            {{ form_widget(form.professional) }}
+    </div> 
+
+<div style="margin-top : 16px;">
+ <center>
+    <button class="btn btn-success"> <i class="fas fa-user-alt"></i> <br>Ajouter utilisateur</button>
+ </center>
+</div>
